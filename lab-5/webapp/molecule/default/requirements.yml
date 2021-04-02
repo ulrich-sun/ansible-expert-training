@@ -1,0 +1,4 @@
+---
+- role: nginx
+  src: https://github.com/diranetafen/ansible-role_nginx.git 
+  version: master
