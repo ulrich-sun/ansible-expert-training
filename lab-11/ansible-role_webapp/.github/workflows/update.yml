@@ -8,24 +8,24 @@ name: update collection
 jobs:
 
   update:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: retrieve collection code and update submodule
         run: |
-          git clone https://github.com/eazytrainingfr/ansible-collection_webapp.git
-          cd ansible-collection_webapp
+          git clone https://github.com/<votre pseudo github>/ansible-collection-webapp.git
+          cd ansible-collection-webapp
           git submodule update --init --recursive
           cd roles/webapp
           git pull origin main
           cd ../..
           git add .
-          git config --global user.email "eazytrainingfr@gmail.com"
-          git config --global user.name "eazytrainingfr"
+          git config --global user.email "votre adresse email github"
+          git config --global user.name "votre pseudo github"
           git commit -m "update role webapp commit ${{ github.sha }}"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.ANSIBLE_TOKEN }}
           branch: main
-          directory: ansible-collection_webapp
-          repository: eazytrainingfr/ansible-collection_webapp
+          directory: ansible-collection-webapp
+          repository: <votre pseudo github>/ansible-collection-webapp
