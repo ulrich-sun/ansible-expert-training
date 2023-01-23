@@ -4,11 +4,12 @@ on:
   push:
     tags:
     - '*'
+permissions: write-all
 
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
     - name: Checkout submodules
@@ -16,7 +17,7 @@ jobs:
     - name: Set up Python 3.
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.8'
     - name: Install test dependencies.
       run: pip3 install ansible
     - name: create collection
